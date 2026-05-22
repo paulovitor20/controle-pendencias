@@ -1,0 +1,497 @@
+/* =========================
+   BODY
+========================= */
+
+body{
+
+    margin:0;
+
+    background:#f4f6fb;
+
+    font-family:Arial, sans-serif;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.logs-container{
+
+    max-width:1700px;
+
+    margin:auto;
+
+    padding:30px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.logs-header{
+
+    background:#121826;
+
+    color:white;
+
+    padding:28px 32px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.08);
+}
+
+.logs-header h1{
+
+    margin:0;
+
+    font-size:34px;
+}
+
+.logs-header p{
+
+    color:#94a3b8;
+
+    margin-top:6px;
+
+    font-size:15px;
+}
+
+/* =========================
+   BOTÃO
+========================= */
+
+.btn-back{
+
+    background:#b30000;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    transition:0.2s;
+}
+
+.btn-back:hover{
+
+    background:#d10000;
+}
+
+/* =========================
+   CARDS TOPO
+========================= */
+
+.logs-cards{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+
+    margin-bottom:25px;
+}
+
+.log-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.05);
+}
+
+.log-card span{
+
+    color:#6b7280;
+
+    font-size:14px;
+}
+
+.log-card h2{
+
+    margin-top:10px;
+
+    margin-bottom:0;
+
+    font-size:32px;
+
+    color:#121826;
+}
+
+/* =========================
+   FILTROS
+========================= */
+
+.logs-filters{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:25px;
+
+    flex-wrap:wrap;
+}
+
+.logs-filters input,
+.logs-filters select{
+
+    background:white;
+
+    border:1px solid #dbe1ea;
+
+    border-radius:12px;
+
+    padding:14px 16px;
+
+    font-size:14px;
+
+    outline:none;
+
+    min-width:240px;
+
+    transition:0.2s;
+}
+
+.logs-filters input:focus,
+.logs-filters select:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37,99,235,0.12);
+}
+
+/* =========================
+   GRID LOGS
+========================= */
+
+.logs-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(320px,1fr)
+        );
+
+    gap:18px;
+}
+
+/* =========================
+   CARD LOG
+========================= */
+
+.log-item{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:22px;
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,0.05);
+
+    transition:0.2s;
+
+    min-height:340px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    border-top:5px solid #d1d5db;
+}
+
+.log-item:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,0.08);
+}
+
+/* CORES CARD */
+
+.log-item.badge-add{
+
+    border-top-color:#16a34a;
+}
+
+.log-item.badge-edit{
+
+    border-top-color:#2563eb;
+}
+
+.log-item.badge-delete{
+
+    border-top-color:#dc2626;
+}
+
+.log-item.badge-status{
+
+    border-top-color:#d97706;
+}
+
+/* =========================
+   TOPO CARD
+========================= */
+
+.log-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+    margin-bottom:16px;
+}
+
+/* USER */
+
+.log-user{
+
+    font-weight:700;
+
+    color:#111827;
+
+    font-size:15px;
+
+    word-break:break-word;
+}
+
+/* DATE */
+
+.log-date{
+
+    color:#6b7280;
+
+    font-size:12px;
+
+    white-space:nowrap;
+}
+
+/* =========================
+   BADGES
+========================= */
+
+.log-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:7px 14px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    font-weight:700;
+}
+
+/* ADD */
+
+.badge-add{
+
+    background:
+        rgba(34,197,94,0.12);
+
+    color:#16a34a;
+}
+
+/* EDIT */
+
+.badge-edit{
+
+    background:
+        rgba(59,130,246,0.12);
+
+    color:#2563eb;
+}
+
+/* DELETE */
+
+.badge-delete{
+
+    background:
+        rgba(239,68,68,0.12);
+
+    color:#dc2626;
+}
+
+/* STATUS */
+
+.badge-status{
+
+    background:
+        rgba(245,158,11,0.12);
+
+    color:#d97706;
+}
+
+/* =========================
+   DETAILS
+========================= */
+
+.log-details{
+
+    color:#374151;
+
+    line-height:1.7;
+
+    font-size:14px;
+
+    word-break:break-word;
+
+    margin-top:18px;
+
+    flex:1;
+}
+
+/* =========================
+   PAGINAÇÃO
+========================= */
+
+.logs-pagination{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:30px;
+
+    flex-wrap:wrap;
+}
+
+.page-btn{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:white;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:0.2s;
+
+    box-shadow:
+        0 2px 6px rgba(0,0,0,0.05);
+}
+
+.page-btn:hover{
+
+    background:#121826;
+
+    color:white;
+}
+
+.page-btn.active{
+
+    background:#121826;
+
+    color:white;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:1000px){
+
+    .logs-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+    }
+
+    .logs-grid{
+
+        grid-template-columns:1fr;
+    }
+}
+/* =========================
+   CONTEÚDO CARD
+========================= */
+
+.log-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    flex:1;
+}
+
+/* BADGE ÁREA */
+
+.log-badge-area{
+
+    min-height:40px;
+
+    display:flex;
+
+    align-items:flex-start;
+}
+
+/* LINHAS */
+
+.log-details strong{
+
+    color:#111827;
+}
+
+/* MELHOR ESPAÇO */
+
+.log-details br{
+
+    content:"";
+
+    display:block;
+
+    margin-bottom:6px;
+}
+
+.log-item:hover{
+
+    transform:translateY(-4px);
+
+    transition:0.2s;
+}

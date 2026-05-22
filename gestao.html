@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARVALHO CARGO</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="css/gestao.css">
+</head>
+<body>
+    <header class="topbar">
+        <h1>
+            PAINEL GERENCIAL
+        </h1>
+        <div class="topbar-actions">
+            <a href="index.html" class="btn-link">
+                Voltar Operacional
+            </a>
+            <button class="btn-report" onclick="logout()">
+                Sair
+            </button>
+        </div>
+    </header>
+    <main class="container">
+        <section class="table-section">
+            <h3>
+                Distribuição de Pendências
+            </h3>
+            <div class="table-responsive"> 
+            <table>
+                <thead>
+                    <tr>
+                        <th>Responsável</th>
+                        <th>Quantidade</th>
+                        <th>Valor Total</th>
+                        <th>% do Total</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaResumo"></tbody>
+            </table>
+            </div>
+        </section>
+        <section class="form-section">
+            <h3>
+                Cadastrar Responsável
+            </h3>
+            <div class="buttons">
+                <input type="text" id="novoResponsavel" placeholder="Nome do responsável" />
+                <button class="btn-primary" onclick="cadastrarResponsavel()">
+                    Cadastrar
+                </button>
+            </div>
+        </section>
+        <section class="form-section">
+            <h3>
+                Cadastrar Banco
+            </h3>
+            <div class="buttons">
+                <input type="text" id="novoBanco" placeholder="Nome do banco" />
+                <button class="btn-primary" onclick="cadastrarBanco()">
+                    Cadastrar Banco
+                </button>
+            </div>
+        </section>
+        <section class="table-section">
+            <h3>
+                Responsáveis
+            </h3>
+            <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaResponsaveis"></tbody>
+            </table>
+            </div>
+        </section>
+        <section class="table-section">
+            <h3>
+                Bancos
+            </h3>
+            <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Banco</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaBancos">
+                </tbody>
+            </table>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="js/gestao.js"></script>
+</body>
+</html>

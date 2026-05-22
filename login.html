@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARVALHO CARGO</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="login-body">
+    <div class="login-gradient"></div>
+    <div class="login-card-full">
+        <!-- ESQUERDA -->
+        <div class="login-left-side">
+            <img src="img/logo.png" class="login-logo-img"/>
+        </div>
+        <!-- DIREITA -->
+        <div class="login-right-side">
+            <div class="login-form-box">
+                <h2>
+                    Entrar
+                </h2>
+                <p>
+                    Controle de Pendências
+                </p>
+                <div class="login-form">
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Email"
+                    />
+                    <input
+                        type="password"
+                        id="senha"
+                        placeholder="Senha"
+                    />
+                    <button
+                        class="btn-login"
+                        onclick="login()"
+                    >
+                        Entrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

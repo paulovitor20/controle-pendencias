@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Pendências</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="css/style.css"></head>
+
+<body>
+    <header class="topbar">
+        <h1>CONTROLE DE PENDÊNCIAS</h1>
+        <div class="topbar-actions">
+            <a href="gestao.html" class="btn-link" id="btnGestao">
+                Painel Gerencial
+            </a>
+            <a href="logs.html" class="btn-link" id="btnLogs">
+                Logs
+            </a>
+            <button class="btn-report" onclick="logout()">
+                Sair
+            </button>
+        </div>
+    </header>
+    <main class="container">
+        <section class="cards">
+            <div class="card">
+                <span>Total Pendências</span>
+                <h2 id="totalPendencias">0</h2>
+            </div>
+            <div class="card">
+                <span>Valor Total</span>
+                <h2 id="valorTotal">R$ 0,00</h2>
+            </div>
+            <div class="card">
+                <span>Pendentes</span>
+                <h2 id="totalPendente">0</h2>
+            </div>
+            <div class="card">
+                <span>Resolvidos</span>
+                <h2 id="totalResolvido">0</h2>
+            </div>
+        </section>
+        <section class="form-section">
+            <h3>Nova Pendência</h3>
+            <div class="form-grid">
+                <select id="banco">
+                    <option value="">
+                        Selecione o Banco
+                    </option>
+                </select>
+                <input type="date" id="data" />
+                <input type="text" id="cliente" placeholder="Fornecedor / Cliente" />
+                <input type="number" id="valor" placeholder="Valor" />
+                <select id="transacao">
+                    <option>CRÉDITO</option>
+                    <option>DÉBITO</option>
+                </select>
+                <select id="dono">
+                    <option value="">
+                        Selecione o Responsável
+                    </option>
+                </select>
+                <select id="status">
+                    <option>PENDENTE</option>
+                    <option>RESOLVIDO</option>
+                </select>
+            </div>
+            <textarea id="observacao" placeholder="Observação"></textarea>
+            <div class="buttons">
+                <button class="btn-primary" onclick="adicionarPendencia()">
+                    Salvar Pendência
+                </button>
+                <button class="btn-report" onclick="gerarImagemRelatorio()">
+                    Gerar Imagem Geral
+                </button>
+                <button class="btn-report" onclick="gerarImagemResponsavel()">
+                    Gerar Imagem Responsável
+                </button>
+                <button class="btn-report" onclick="gerarImagemFiltros()">
+                    Gerar Imagem Filtros
+                </button>
+                <label class="btn-import">
+                    Importar Excel
+                    <input type="file" id="excelFile" hidden />
+                </label>
+            </div>
+        </section>
+        <section class="table-section">
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label>Pesquisar</label>
+                    <input type="text" id="search" placeholder="Pesquisar pendências..." />
+                </div>
+                <div class="filter-group">
+                    <label>Data Inicial</label>
+                    <input type="date" id="dataInicial" />
+                </div>
+                <div class="filter-group">
+                    <label>Data Final</label>
+                    <input type="date" id="dataFinal" />
+                </div>
+                <div class="filter-group">
+                    <label>Status</label>
+                    <select id="filtroStatus">
+                        <option value="PENDENTE">Pendentes</option>
+                        <option value="TODOS">Todas</option>
+                        <option value="RESOLVIDO">Resolvidas</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Responsável</label>
+                    <select id="filtroDono">
+                        <option value="TODOS">Todos</option>
+                    </select>
+                </div>
+                <div class="filtro-item">
+                    <label>Transação</label>
+                    <select id="filtroTransacao">
+                        <option value="">Todas</option>
+                        <option value="CRÉDITO">Crédito</option>
+                        <option value="DÉBITO">Débito</option>
+                    </select>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Banco</th>
+                            <th>Data</th>
+                            <th>Cliente</th>
+                            <th>Valor</th>
+                            <th>Transação</th>
+                            <th>Dono</th>
+                            <th>Observação</th>
+                            <th>Status</th>
+                            <th>Dias</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaPendencias"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoria do Sistema</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="css/logs.css">
+</head>
+<body>
+    <div class="logs-container">
+        <!-- HEADER -->
+        <div class="logs-header">
+            <div>
+                <h1>
+                    Auditoria do Sistema
+                </h1>
+                <p>
+                    Histórico completo de alterações
+                </p>
+            </div>
+            <a
+                href="index.html"
+                class="btn-back"
+            >
+                Voltar
+            </a>
+        </div>
+        <!-- CARDS TOPO -->
+        <div class="logs-cards">
+            <div class="log-card">
+                <span>
+                    Total Logs
+                </span>
+                <h2 id="totalLogs">
+                    0
+                </h2>
+            </div>
+            <div class="log-card">
+                <span>
+                    Última Atualização
+                </span>
+                <h2 id="ultimaAtualizacao">
+                    --
+                </h2>
+            </div>
+        </div>
+        <!-- FILTROS -->
+        <div class="logs-filters">
+            <input
+                type="text"
+                id="filtroPesquisa"
+                placeholder="Pesquisar logs..."
+            />
+            <select id="filtroAcao">
+                <option value="">
+                    Todas ações
+                </option>
+                <option value="ADICIONOU">
+                    Adicionou
+                </option>
+                <option value="EDITOU">
+                    Editou
+                </option>
+                <option value="EXCLUIU">
+                    Excluiu
+                </option>
+                <option value="STATUS">
+                    Status
+                </option>
+            </select>
+        </div>
+        <!-- GRID LOGS -->
+        <div
+            id="logsLista"
+            class="logs-grid"
+        >
+        </div>
+        <!-- PAGINAÇÃO -->
+        <div
+            id="paginacaoLogs"
+            class="logs-pagination"
+        >
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="js/logs.js"></script>
+</body>
+</html>
