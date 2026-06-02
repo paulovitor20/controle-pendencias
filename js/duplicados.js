@@ -22,7 +22,9 @@ const usuariosPermitidos = [
 
     "aline.silva@carvalhocargo.com.br",
 
-    "paulo.vitor@carvalhocargo.com.br"
+    "paulo.vitor@carvalhocargo.com.br",
+    
+    "katia.rocha@carvalhocargo.com.br"
 
 ];
 // =======================
