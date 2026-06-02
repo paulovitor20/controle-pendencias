@@ -13,6 +13,61 @@ const supabaseClient =
         supabaseUrl,
         supabaseKey
     );
+
+const usuariosPermitidos = [
+
+    "railane.brito@carvalhocargo.com.br",
+
+    "mikaele.guimaraes@carvalhocargo.com.br",
+
+    "aline.silva@carvalhocargo.com.br",
+
+    "paulo.vitor@carvalhocargo.com.br"
+
+];
+// =======================
+// VALIDA ACESSO
+// =======================
+
+const usuario =
+    JSON.parse(
+        localStorage.getItem(
+            "usuario"
+        )
+    );
+
+if (!usuario) {
+
+    alert(
+        "Faça login."
+    );
+
+    window.location.href =
+        "/login";
+
+    throw new Error(
+        "Usuário não logado"
+    );
+}
+
+if (
+    !usuariosPermitidos.includes(
+        usuario.email
+            .toLowerCase()
+    )
+) {
+
+    alert(
+        "Você não possui acesso à área de Duplicados."
+    );
+
+    window.location.href =
+        "/";
+
+    throw new Error(
+        "Sem permissão"
+    );
+}
 // =======================
 // CARREGAR DUPLICADOS
 // =======================
