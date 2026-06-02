@@ -1,98 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         Pagamentos Duplicados
     </title>
-
-    <link rel="icon"
-          type="image/png"
-          href="img/favicon.png">
-
-    <link rel="stylesheet"
-          href="css/style.css">
-
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
     <header class="topbar">
-
         <h1>
             PAGAMENTOS DUPLICADOS
         </h1>
-
         <div class="topbar-actions">
-
             <a href="/" class="btn-link">
                 Operacional
             </a>
-
             <a href="/gestao" class="btn-link">
                 Gestão
             </a>
-
             <a href="/logs" class="btn-link">
                 Logs
             </a>
-
         </div>
-
     </header>
-
     <main class="container">
-
         <section class="table-section">
-
             <h3>
-                Pendências de Pagamento Duplicado
+                Pendências em Duplicidade
             </h3>
-
             <div class="table-responsive">
-
                 <table>
-
                     <thead>
-
                         <tr>
-
-                            <th>ID</th>
-
                             <th>Banco</th>
-
+                            <th>Data</th>
                             <th>Cliente</th>
-
                             <th>Valor</th>
-
+                            <th>Transação</th>
+                            <th>Responsável</th>
+                            <th>Observação</th>
                             <th>Status</th>
+                            <th>Ações</th>
 
                         </tr>
-
                     </thead>
-
                     <tbody id="tabelaDuplicados">
-
                     </tbody>
-
                 </table>
-
             </div>
-
         </section>
-
     </main>
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
     <script src="js/duplicados.js"></script>
-
 </body>
-
 </html>

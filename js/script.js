@@ -1,5 +1,3 @@
-// script.js
-
 // =======================
 // SUPABASE
 // =======================
@@ -413,6 +411,11 @@ function renderTabela(lista) {
         >
             Excluir
         </button>
+        <button
+            onclick="moverParaDuplicados(${p.id})"
+            class="status-btn">
+            Duplicados
+        </button>
 
     ` : `
 
@@ -427,7 +430,7 @@ function renderTabela(lista) {
 
     `}
 
-</td>
+    </td>
 
       </tr>
 
@@ -436,6 +439,7 @@ function renderTabela(lista) {
     tabela.innerHTML = html;
     atualizarDashboard(lista);
     ativarResizeColunas();
+    
 }
 // =======================
 // NORMALIZAR DONO
@@ -2347,4 +2351,126 @@ function ativarResizeColunas() {
             mouseDown
         );
     });
+}
+async function moverParaDuplicados(id) {
+
+    const confirmar =
+        confirm(
+            "Mover esta pendência para Duplicados?"
+        );
+
+    if (!confirmar) return;
+
+    try {
+
+        // BUSCA REGISTRO
+
+        const {
+            data: pendencia,
+            error: erroBusca
+        } = await supabaseClient
+            .from("pendencias")
+            .select("*")
+            .eq("id", id)
+            .single();
+
+        if (erroBusca) {
+
+            alert(
+                "Erro ao localizar pendência."
+            );
+
+            console.error(
+                erroBusca
+            );
+
+            return;
+        }
+
+        // INSERE EM DUPLICADOS
+
+        const {
+            error: erroInsert
+        } = await supabaseClient
+            .from("duplicados")
+            .insert([{
+
+                banco:
+                    pendencia.banco,
+
+                data:
+                    pendencia.data,
+
+                cliente:
+                    pendencia.cliente,
+
+                valor:
+                    pendencia.valor,
+
+                transacao:
+                    pendencia.transacao,
+
+                dono:
+                    pendencia.dono,
+
+                observacao:
+                    pendencia.observacao,
+
+                status:
+                    pendencia.status
+
+            }]);
+
+        if (erroInsert) {
+
+            alert(
+                "Erro ao mover para Duplicados."
+            );
+
+            console.error(
+                erroInsert
+            );
+
+            return;
+        }
+
+        // REMOVE DA TABELA ORIGINAL
+
+        const {
+            error: erroDelete
+        } = await supabaseClient
+            .from("pendencias")
+            .delete()
+            .eq("id", id);
+
+        if (erroDelete) {
+
+            alert(
+                "Registro foi copiado mas não foi removido."
+            );
+
+            console.error(
+                erroDelete
+            );
+
+            return;
+        }
+
+        alert(
+            "Movido para Duplicados."
+        );
+
+        carregarPendencias();
+
+    }
+    catch (erro) {
+
+        console.error(
+            erro
+        );
+
+        alert(
+            "Erro inesperado."
+        );
+    }
 }
