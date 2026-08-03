@@ -150,6 +150,37 @@
                     <tbody id="tabelaPendencias"></tbody>
                 </table>
             </div>
+            <div id="modalObsInterna" class="modalObs" style="display:none;">
+
+                <div class="modalObsContent">
+
+                    <h2>
+
+                        Observação Interna
+
+                    </h2>
+
+                    <textarea id="textoObsInterna" rows="8"></textarea>
+
+                    <div class="modalButtons">
+
+                        <button onclick="salvarObservacaoInterna()" class="btn-primary">
+
+                            Salvar
+
+                        </button>
+
+                        <button onclick="fecharModalObs()" class="btn-report">
+
+                            Cancelar
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>

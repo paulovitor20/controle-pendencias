@@ -881,3 +881,80 @@ tr.editando{
         max-width:320px;
     }
 }
+
+.btn-observacao{
+
+    background:#6d28d9;
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:8px;
+
+    padding:7px 12px;
+
+    cursor:pointer;
+
+    font-size:12px;
+
+    transition:.2s;
+}
+
+.btn-observacao:hover{
+
+    background:#5b21b6;
+}
+.modalObs{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:9999;
+}
+
+.modalObsContent{
+
+    width:650px;
+
+    max-width:95%;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.modalObsContent textarea{
+
+    width:100%;
+
+    resize:vertical;
+
+    min-height:220px;
+
+    margin-top:20px;
+
+    margin-bottom:20px;
+}
+
+.modalButtons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+}

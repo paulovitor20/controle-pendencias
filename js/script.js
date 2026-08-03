@@ -85,6 +85,7 @@ window.userRole =
 // =======================
 
 let editandoId = null;
+let pendenciaObsAtual = null;
 // =======================
 // ELEMENTOS
 // =======================
@@ -416,6 +417,12 @@ function renderTabela(lista) {
             class="status-btn">
             Duplicados
         </button>
+        <button
+            class="btn-observacao"
+            onclick="abrirObservacaoInterna(${p.id})"
+        >
+            Obs. Interna
+        </button>
 
     ` : `
 
@@ -439,7 +446,7 @@ function renderTabela(lista) {
     tabela.innerHTML = html;
     atualizarDashboard(lista);
     ativarResizeColunas();
-    
+
 }
 // =======================
 // NORMALIZAR DONO
@@ -2473,4 +2480,122 @@ async function moverParaDuplicados(id) {
             "Erro inesperado."
         );
     }
+}
+// =======================
+// ABRIR OBSERVAÇÃO INTERNA
+// =======================
+
+async function abrirObservacaoInterna(id){
+
+    pendenciaObsAtual = id;
+
+    const { data, error } =
+        await supabaseClient
+            .from("pendencias")
+            .select("cliente, observacao_interna")
+            .eq("id", id)
+            .single();
+
+    if(error){
+
+        console.error(error);
+
+        return;
+    }
+
+    document.getElementById(
+        "textoObsInterna"
+    ).value =
+        data.observacao_interna || "";
+
+    document.getElementById(
+        "modalObsInterna"
+    ).style.display = "flex";
+}
+// =======================
+// FECHAR MODAL
+// =======================
+
+function fecharModalObs(){
+
+    document.getElementById(
+        "modalObsInterna"
+    ).style.display = "none";
+
+    pendenciaObsAtual = null;
+}
+// =======================
+// SALVAR OBSERVAÇÃO INTERNA
+// =======================
+
+async function salvarObservacaoInterna(){
+
+    if(!pendenciaObsAtual){
+
+        return;
+    }
+
+    // Busca a pendência atual
+    const { data: antiga } =
+        await supabaseClient
+            .from("pendencias")
+            .select("*")
+            .eq("id", pendenciaObsAtual)
+            .single();
+
+    const texto = document
+        .getElementById(
+            "textoObsInterna"
+        )
+        .value;
+
+    const { error } =
+        await supabaseClient
+            .from("pendencias")
+            .update({
+
+                observacao_interna: texto
+
+            })
+            .eq(
+                "id",
+                pendenciaObsAtual
+            );
+
+    if(error){
+
+        console.error(error);
+
+        alert(
+            "Erro ao salvar."
+        );
+
+        return;
+    }
+
+    // REGISTRA LOG
+
+    await registrarLog(
+
+        "EDITOU OBSERVAÇÃO INTERNA",
+
+        `
+
+Cliente:
+${antiga.cliente}
+
+Observação Interna:
+
+${antiga.observacao_interna || "(vazia)"}
+
+↓
+
+${texto || "(vazia)"}
+
+        `
+    );
+
+    fecharModalObs();
+
+    carregarPendencias();
 }
